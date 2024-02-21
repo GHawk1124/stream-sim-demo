@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euler Fluid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="flex flex-col min-h-screen">
+    <!-- Title Bar -->
+    <header class="bg-gray-800 text-white p-4">
+        <h1 class="text-4xl font-bold text-center">Fluid Simulator</h1>
+    </header>
+
+    <!-- Main content wrapper -->
+    <div class="flex flex-1">
+        <!-- Sidebar navigation -->
+        <div class="w-64 bg-gray-300 p-5">
+            <!-- Button group -->
+            <div class="inline-flex flex-col space-y-2">
+                <button
+                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:z-10 dark:text-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    onclick="setupScene(1)">Wind Tunnel Low Res</button>
+                <button
+                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:z-10 dark:text-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    onclick="setupScene(3)">Wind Tunnel High Res</button>
+            </div>
+            <!-- Checkboxes with labels -->
+            <div class="flex flex-col p-5 space-y-4">
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" id="streamButton"><span
+                        class="ml-2 text-gray-700">Streamlines</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" id="velocityButton"><span
+                        class="ml-2 text-gray-700">Velocities</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" id="pressureButton"><span
+                        class="ml-2 text-gray-700">Pressure</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" id="smokeButton" checked><span
+                        class="ml-2 text-gray-700">Smoke</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" id="overrelaxButton"
+                        checked><span class="ml-2 text-gray-700">Overrelax</span>
+                </label>
+            </div>
+            <div class="inline-flex flex-col space-y-2">
+                <label for="Resultion"
+                    class="block overflow-hidden rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 dark:border-gray-700 dark:bg-gray-800">
+                    <span class="text-xs font-medium text-gray-700 dark:text-gray-200"> Resolution </span>
+
+                    <input type="email" id="resolutionInput" placeholder="100"
+                        class="mt-1 w-full border-none bg-transparent p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm dark:text-white" />
+                </label>
+            </div>
+        </div>
+        <!-- Main content -->
+        <div class="flex-1 p-5 bg-gray-300">
+            <canvas id="fluid-sim-canvas" style="border:2px solid #000; width:100%; height:100%;"></canvas>
+        </div>
+        <script src='index.js'></script>
+</body>
+
+</html>
